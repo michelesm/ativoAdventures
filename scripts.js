@@ -393,4 +393,73 @@ document.addEventListener('DOMContentLoaded', function () {
             const ctx = document.getElementById('octalysisChart').getContext('2d');
             new Chart(ctx, chartConfig);
         };
+
+    // Conteúdo dos cards de tecnologia
+    const techDetails = {
+        unity: {
+            title: "Unity (com C#)",
+            desc: "Unity é uma das engines de jogos mais populares do mundo, permitindo criar experiências 2D e 3D multiplataforma. Utiliza C# como linguagem principal para scripts e lógica do jogo.",
+            img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg"
+        },
+        health: {
+            title: "Health Connect (com Plugin Java)",
+            desc: "Health Connect é uma API do Google para integrar dados de saúde de diferentes apps. O plugin Java conecta o Unity ao Health Connect, permitindo que o jogo leia dados reais de atividade física.",
+            img: "https://play-lh.googleusercontent.com/0n4Qw8w8vQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw=w240-h480-rw"
+        },
+        linguagens: {
+            title: "C# e Java",
+            desc: "C# é usado para o desenvolvimento do jogo na Unity, enquanto Java é utilizado para criar o plugin que faz a ponte entre o jogo e o Health Connect no Android.",
+            img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
+        },
+        design: {
+            title: "IA Generativa e Assets Livres",
+            desc: "Para criar artes, sons e elementos visuais, foram utilizados recursos de IA generativa e bancos de assets livres, garantindo criatividade e respeito a direitos autorais.",
+            img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg"
+        },
+        ide: {
+            title: "VS Code e Android Studio",
+            desc: "VS Code é um editor de código leve e versátil, ideal para scripts e organização do projeto. Android Studio é utilizado para compilar e testar o plugin Java no Android.",
+            img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg"
+        },
+        gestao: {
+            title: "Notion e GitHub",
+            desc: "Notion é usado para organização, planejamento e documentação do projeto. O GitHub gerencia o versionamento do código e colaboração entre desenvolvedores.",
+            img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+        }
+    };
+
+    // Interação dos cards de tecnologia
+    const techCards = document.querySelectorAll('#tech-cards [data-tech]');
+    const techDetailCard = document.getElementById('tech-detail-card');
+    const techDetailContent = document.getElementById('tech-detail-content');
+    const closeTechDetail = document.getElementById('close-tech-detail');
+
+    techCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const key = card.getAttribute('data-tech');
+            const detail = techDetails[key];
+            if (detail) {
+                techDetailContent.innerHTML = `
+                    <h3 class="text-xl font-bold mb-2 text-[#0077B6]">${detail.title}</h3>
+                    <img src="${detail.img}" alt="${detail.title}" class="w-24 h-24 object-contain mx-auto mb-4">
+                    <p class="text-gray-700 text-center">${detail.desc}</p>
+                `;
+                techDetailCard.classList.remove('hidden');
+            }
+        });
+    });
+
+    if (closeTechDetail) {
+        closeTechDetail.addEventListener('click', () => {
+            techDetailCard.classList.add('hidden');
+        });
+    }
+    // Fecha ao clicar fora do card
+    if (techDetailCard) {
+        techDetailCard.addEventListener('click', (e) => {
+            if (e.target === techDetailCard) {
+                techDetailCard.classList.add('hidden');
+            }
+        });
+    }
 });

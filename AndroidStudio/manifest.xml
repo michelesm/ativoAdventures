@@ -1,0 +1,27 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.meuestudiodejogos.ativoadventure.healthconnect">
+
+    <uses-permission android:name="android.permission.health.READ_STEPS"/>
+    <uses-permission android:name="android.permission.health.READ_DISTANCE"/>
+    <uses-permission android:name="android.permission.health.READ_TOTAL_CALORIES_BURNED"/>
+    <uses-permission android:name="android.permission.health.READ_ACTIVE_MINUTES"/> <application>
+        <activity
+            android:name=".PermissionActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
+
+        <activity
+            android:name="androidx.health.connect.client.ui.HealthConnectPermissionController"
+            android:exported="true"
+            android:permission="android.permission.START_ACTIVITIES_FROM_BACKGROUND">
+            <intent-filter>
+                <action android:name="androidx.health.connect.action.REQUEST_PERMISSIONS"/>
+            </intent-filter>
+        </activity>
+
+        <queries>
+            <package android:name="com.google.android.apps.healthdata" />
+        </queries>
+    </application>
+</manifest>
