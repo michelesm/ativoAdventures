@@ -191,33 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Botão para carregar o conteúdo dinâmico
-    const btn = document.getElementById('descubraProjetoBtn');
-    if (btn) {
-        btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            fetch('conteudo.html')
-                .then(response => {
-                    if (!response.ok) throw new Error('Erro ao carregar conteúdo');
-                    return response.text();
-                })
-                .then(html => {
-                    // Esconde a section hero
-                    const hero = document.getElementById('hero');
-                    if (hero) hero.style.display = 'none';
-                    // Insere o conteúdo carregado
-                    document.getElementById('conteudo-dinamico').innerHTML = html;
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    // Se precisar inicializar gráficos ou outros scripts, chame aqui
-                    if (typeof inicializarGraficos === 'function') inicializarGraficos();
-                    if (typeof inicializarTabs === 'function') inicializarTabs();
-                    if (typeof inicializarMenuMobile === 'function') inicializarMenuMobile();
-                })
-                .catch(err => {
-                    alert('Não foi possível carregar o conteúdo.');
-                });
-        });
-    }
+    
 
     // Funções de inicialização para gráficos, tabs, menu mobile etc.
     window.inicializarGraficos = function () {
