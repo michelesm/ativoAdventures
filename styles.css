@@ -44,3 +44,14 @@ body {
 .tech-icon:hover {
     transform: scale(1.1);
 }
+
+.max-w-4xl {
+    margin-top: 1.0rem !important; /* Reduz o espaço acima do conteúdo principal */
+}
+
+
+@media (min-width: 600px) {
+    .max-w-4xl {
+        margin-top: 1.5rem !important; /* Um pouco mais de espaço em telas maiores */
+    }
+}
