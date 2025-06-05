@@ -191,8 +191,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    
-
     // Funções de inicialização para gráficos, tabs, menu mobile etc.
     window.inicializarGraficos = function () {
         // ... (coloque aqui o código dos gráficos Chart.js)
@@ -208,4 +206,38 @@ document.addEventListener('DOMContentLoaded', function () {
     if (document.getElementById('obesityChart')) window.inicializarGraficos();
     if (document.querySelector('.tab-button')) window.inicializarTabs();
     if (document.getElementById('mobile-menu-button')) window.inicializarMenuMobile();
+
+    // Slides da section problema
+    function inicializarSlidesProblema() {
+        const slides = document.querySelectorAll('.problema-slide');
+        const btnPrev = document.getElementById('problema-prev');
+        const btnNext = document.getElementById('problema-next');
+        if (!slides.length || !btnPrev || !btnNext) return;
+
+        let atual = 0;
+        function mostrarSlide(idx) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('hidden', i !== idx);
+            });
+            btnPrev.disabled = idx === 0;
+            btnNext.disabled = idx === slides.length - 1;
+        }
+
+        btnPrev.addEventListener('click', () => {
+            if (atual > 0) {
+                atual--;
+                mostrarSlide(atual);
+            }
+        });
+        btnNext.addEventListener('click', () => {
+            if (atual < slides.length - 1) {
+                atual++;
+                mostrarSlide(atual);
+            }
+        });
+
+        mostrarSlide(atual);
+    }
+
+    inicializarSlidesProblema();
 });
