@@ -398,13 +398,112 @@ document.addEventListener('DOMContentLoaded', function () {
     const techDetails = {
         unity: {
             title: "Unity (com C#)",
-            desc: "Unity é uma das engines de jogos mais populares do mundo, permitindo criar experiências 2D e 3D multiplataforma. Utiliza C# como linguagem principal para scripts e lógica do jogo.",
+            desc: `
+        <div class="flex flex-col items-center gap-4">
+            <a href="https://github.com/michelesm/ativoAdventures/tree/main/unity" target="_blank"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-[#0077B6] text-white rounded-full font-semibold shadow hover:bg-[#023e8a] transition mb-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+                Ver código no GitHub
+            </a>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg"
+                alt="Unity" class="w-20 h-20 object-contain mb-2 drop-shadow-lg">
+        </div>
+        <div class="max-h-72 overflow-y-auto pr-2 mt-2">
+            <h4 class="text-lg font-bold text-[#0077B6] mb-2 mt-2 text-center">Principais classes e funcionalidades</h4>
+            <div class="space-y-4">
+                <div class="bg-blue-50 rounded-lg p-3 border-l-4 border-[#0077B6]">
+                    <h5 class="font-semibold text-[#0077B6] mb-1 flex items-center gap-2">GameManager.cs</h5>
+                    <ul class="list-disc ml-5 text-sm text-gray-700 space-y-1">
+                        <li><b>Objetivo:</b> Controla o fluxo principal do jogo.</li>
+                        <li>Gerencia o estado do jogo (menus, jogando, pausado, etc) usando um enum.</li>
+                        <li>Centraliza referências a outros managers.</li>
+                        <li>Inicializa eventos e configurações no início do jogo.</li>
+                        <li>Executa o core loop e sincroniza dados com o HealthConnectManager.</li>
+                        <li>Gerencia transições de cena, início, continuação e saída do jogo.</li>
+                        <li>Salva dados ao pausar ou fechar o app.</li>
+                    </ul>
+                </div>
+                <div class="bg-blue-50 rounded-lg p-3 border-l-4 border-[#0096c7]">
+                    <h5 class="font-semibold text-[#0096c7] mb-1 flex items-center gap-2">PlayerData.cs</h5>
+                    <ul class="list-disc ml-5 text-sm text-gray-700 space-y-1">
+                        <li><b>Objetivo:</b> Armazena e manipula os dados do jogador.</li>
+                        <li>Classe PlayerStats armazena energia, vidas, moedas, etc.</li>
+                        <li>Dispara eventos para atualizar a UI quando dados mudam.</li>
+                        <li>Converte dados brutos (passos, distância) em recursos do jogo.</li>
+                        <li>Métodos para adicionar/gastar energia, vidas e moedas.</li>
+                        <li>Salva e carrega dados usando PlayerPrefs e JSON.</li>
+                        <li>Lógica para reset diário de status e contadores.</li>
+                    </ul>
+                </div>
+                <div class="bg-blue-50 rounded-lg p-3 border-l-4 border-[#48CAE4]">
+                    <h5 class="font-semibold text-[#48CAE4] mb-1 flex items-center gap-2">UIManager.cs</h5>
+                    <ul class="list-disc ml-5 text-sm text-gray-700 space-y-1">
+                        <li><b>Objetivo:</b> Gerencia e atualiza a interface do usuário.</li>
+                        <li>Referências a elementos visuais (textos, popups, etc).</li>
+                        <li>Inscreve e reage a eventos do PlayerData e HealthConnectManager.</li>
+                        <li>Atualiza energia, vidas e moedas na tela.</li>
+                        <li>Exibe popups de erro ou permissões.</li>
+                    </ul>
+                </div>
+                <div class="bg-blue-50 rounded-lg p-3 border-l-4 border-[#00B4D8]">
+                    <h5 class="font-semibold text-[#00B4D8] mb-1 flex items-center gap-2">HealthConnectManager.cs</h5>
+                    <ul class="list-disc ml-5 text-sm text-gray-700 space-y-1">
+                        <li><b>Objetivo:</b> Integra o jogo com o Health Connect (dados de saúde do Android).</li>
+                        <li>Gerencia comunicação com o plugin Java e a Activity do Android.</li>
+                        <li>Solicita permissões de acesso aos dados de saúde.</li>
+                        <li>Recebe e processa dados de passos e distância.</li>
+                        <li>Dispara eventos para atualizar PlayerData e UI.</li>
+                        <li>Lida com ausência do app Health Connect e orienta o usuário.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    `,
             img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg"
         },
         health: {
             title: "Health Connect (com Plugin Java)",
-            desc: "Health Connect é uma API do Google para integrar dados de saúde de diferentes apps. O plugin Java conecta o Unity ao Health Connect, permitindo que o jogo leia dados reais de atividade física.",
-            img: "https://play-lh.googleusercontent.com/0n4Qw8w8vQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw=w240-h480-rw"
+            desc: `
+                <div class="flex flex-col items-center gap-4">
+                    <a href="https://github.com/michelesm/ativoAdventures/tree/main/AndroidStudio" target="_blank"
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-[#0077B6] text-white rounded-full font-semibold shadow hover:bg-[#023e8a] transition mb-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                        Ver código no GitHub
+                    </a>                    
+                </div>
+                <div class="max-h-72 overflow-y-auto pr-2 mt-2">
+                    <h4 class="text-lg font-bold text-[#0077B6] mb-2 mt-2 text-center">Principais classes e funcionamento</h4>
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 rounded-lg p-3 border-l-4 border-[#0077B6]">
+                            <h5 class="font-semibold text-[#0077B6] mb-1 flex items-center gap-2">HealthPlugin.java</h5>
+                            <ul class="list-disc ml-5 text-sm text-gray-700 space-y-1">
+                                <li><b>Objetivo:</b> Faz a ponte entre o Unity e o Health Connect no Android.</li>
+                                <li>Gerencia permissões e inicialização do Health Connect Client.</li>
+                                <li>Fornece métodos para Unity solicitar permissões, checar permissões e ler dados (passos, distância, calorias, etc).</li>
+                                <li>Executa leituras de dados em background e envia resultados para o Unity via <code>UnitySendMessage</code>.</li>
+                                <li>Se o Health Connect não estiver disponível, informa o Unity e pode abrir a Play Store para instalação.</li>
+                                <li>Utiliza <b>ExecutorService</b> para operações assíncronas e <b>Handler</b> para comunicação com a thread principal.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-3 border-l-4 border-[#0096c7]">
+                            <h5 class="font-semibold text-[#0096c7] mb-1 flex items-center gap-2">PermissionActivity.java</h5>
+                            <ul class="list-disc ml-5 text-sm text-gray-700 space-y-1">
+                                <li><b>Objetivo:</b> Activity transparente para solicitar permissões do Health Connect.</li>
+                                <li>Recebe as permissões desejadas via Intent.</li>
+                                <li>Lança o diálogo de permissão do Health Connect usando <code>registerForActivityResult</code>.</li>
+                                <li>Ao receber o resultado, envia para o Unity quais permissões foram concedidas ou negadas.</li>
+                                <li>Fecha automaticamente após o resultado.</li>
+                                <li>Necessita das dependências <b>androidx.appcompat</b> e <b>androidx.activity</b> no build.gradle.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `,
+            img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg"
         },
         linguagens: {
             title: "C# e Java",
@@ -422,10 +521,24 @@ document.addEventListener('DOMContentLoaded', function () {
             img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg"
         },
         gestao: {
-            title: "Notion e GitHub",
-            desc: "Notion é usado para organização, planejamento e documentação do projeto. O GitHub gerencia o versionamento do código e colaboração entre desenvolvedores.",
-            img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-        }
+            title: "Notion",
+            desc: `
+                <div class="flex flex-col items-center gap-4">
+  
+                <a href="https://www.notion.so/Ativo-Adventure-1f742e1c63e080d49263c2ad7a1dac8c?pvs=12" target="_blank"
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-[#0077B6] text-white rounded-full font-semibold shadow hover:bg-[#023e8a] transition mb-2">
+                        <!-- SVG do Notion -->
+                        
+                        Acessar Notion
+                    </a>
+                </div>
+                <div class="mt-2 text-gray-700 text-center">
+                    Para gerenciar o backlog de funcionalidades, as tarefas das Sprints e o fluxo
+                    de trabalho ágil, foi utilizada o Notion como ferramenta visual.
+                </div>
+            `,
+            img: "https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png"
+        },
     };
 
     // Interação dos cards de tecnologia
