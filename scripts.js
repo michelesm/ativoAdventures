@@ -230,60 +230,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // ... (coloque aqui o código do menu mobile, se houver)
     };
 
-    // Inicialização das sessões dinâmicas
-    window.inicializarSessoes = function () {
-        const secoes = Array.from(document.querySelectorAll('.sessao-conteudo'));
-        const btnAnterior = document.getElementById('btn-anterior');
-        const btnProxima = document.getElementById('btn-proxima');
-        let indiceAtual = 0;
-
-        function mostrarSecao(indice) {
-            secoes.forEach((sec, i) => {
-                sec.classList.toggle('hidden', i !== indice);
-            });
-
-            // Exibe ou oculta botões conforme necessário
-            if (btnAnterior) {
-                btnAnterior.innerHTML = indice === 0
-                    ? '<span class="text-xl">⬆️</span> Voltar ao Início'
-                    : '<span class="text-xl">⬆️</span> Anterior';
-            }
-            if (btnProxima) {
-                btnProxima.style.display = (indice === secoes.length - 1) ? 'none' : '';
-            }
-        }
-
-        if (btnAnterior) {
-            btnAnterior.onclick = function () {
-                if (indiceAtual === 0) {
-                    // Volta para a index.html
-                    window.location.href = "index.html";
-                } else {
-                    indiceAtual--;
-                    mostrarSecao(indiceAtual);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            };
-        }
-
-        if (btnProxima) {
-            btnProxima.onclick = function () {
-                if (indiceAtual < secoes.length - 1) {
-                    indiceAtual++;
-                    mostrarSecao(indiceAtual);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            };
-        }
-
-        mostrarSecao(indiceAtual);
-    };
-
-    // Ao carregar conteudo.html dinamicamente, inicializar as sessões
-    if (document.getElementById('sessao-navegacao')) {
-        window.inicializarSessoes();
-    }
-
     // Se quiser que funcione também ao abrir direto a página completa:
     if (document.getElementById('obesityChart')) window.inicializarGraficos();
     if (document.querySelector('.tab-button')) window.inicializarTabs();
