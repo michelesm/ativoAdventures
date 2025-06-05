@@ -46,18 +46,30 @@
     <main>
         <div class="max-w-4xl mx-auto py-10 shadow-md p-8 ">
             <section id="hero"
-                class="md:col-span-2 bg-white rounded-md shadow-md p-6 py-16 min-h-screen flex items-center justify-center">
-                <div class="container mx-auto flex items-center justify-center">
-                    <div class="container mx-auto px-6 text-center">
-                        <h2 class="text-4xl md:text-5xl font-extrabold font-black text-[#45B7D1]">Transformando
-                            Movimento em
-                            Magia</h2>
-                        <p class="mt-8 text-lg md:text-xl text-gray-600">Desenvolvimento De Um Jogo Digital Como
-                            Ferramenta
-                            De Incentivo À Atividade Física Para Crianças E Adolescentes</p>
+                class="md:col-span-2 bg-gradient-to-br from-[#e0f7fa] via-white to-[#f1f8e9] rounded-2xl shadow-xl p-4 py-8 min-h-[60vh] flex items-center justify-center relative overflow-hidden">
+                <!-- Elementos decorativos -->
+                <div class="absolute left-0 top-0 w-40 h-40 bg-[#45B7D1]/20 rounded-full blur-2xl -z-10"></div>
+                <div class="absolute right-0 bottom-0 w-56 h-56 bg-[#4ECDC4]/20 rounded-full blur-2xl -z-10"></div>
+                <div class="container mx-auto flex flex-col items-center justify-center">
+                    <div class="max-w-3xl mx-auto px-6 text-center">
+                        <h2 class="text-4xl md:text-5xl font-extrabold text-[#45B7D1] drop-shadow-sm leading-tight mb-6">
+                            Desenvolvimento de um Jogo Digital como Ferramenta de Incentivo à Atividade Física para Crianças e Adolescentes
+                        </h2>
+                        <p class="mt-4 text-lg md:text-2xl text-gray-700 font-medium">
+                            <span class="block text-2xl md:text-3xl font-black text-[#FF6B6B] mb-2 tracking-tight">Ativo Adventures</span>
+                            <span class="block text-base md:text-lg text-gray-600 mb-2">Um projeto de TCC de <b>Michele Santos Memoria</b></span>
+                            <span class="block text-base md:text-lg text-gray-600 mb-2">Orientação: Prof. Ms. Kláudio Medeiros</span>
+                            <span class="block text-base md:text-lg text-gray-600">Curso de Bacharelado em Sistemas de Informação - UniFacisa</span>
+                        </p>
                         <a href="#problema"
-                            class="mt-8 inline-block bg-teal-600 text-white font-bold py-3 px-8 rounded-full hover:bg-teal-700 transition-transform transform hover:scale-105">Descubra
-                            o Projeto</a>
+                            class="mt-10 inline-block bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-bold py-3 px-10 rounded-full shadow-lg hover:from-teal-600 hover:to-cyan-600 transition-transform transform hover:scale-105 text-lg tracking-wide">
+                            Descubra o Projeto
+                        </a>
+                    </div>
+                    <!-- Ilustração opcional -->
+                    <div class="mt-10 flex justify-center">
+                        <img src="anexos/lumi-hero.png" alt="Mascote Lumi do Ativo Adventures"
+                            class="w-40 h-40 md:w-56 md:h-56 object-contain drop-shadow-lg rounded-full bg-white/80 border-4 border-[#45B7D1]">
                     </div>
                 </div>
             </section>
@@ -184,7 +196,7 @@
                                             <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-teal-500">
                                                 <p class="text-4xl font-bold text-teal-600">60 Minutos</p>
                                                 <p class="text-sm text-gray-600">É o tempo de atividade física diária
-                                                    recomendado
+                                                    recomendada
                                                     pela OMS, que a maioria não atinge.</p>
                                             </div>
                                         </div>
@@ -238,13 +250,12 @@
                                             Ferramenta Positiva?</h2>
                                         <p class="text-gray-700">Diante deste cenário desafiador, surge uma questão
                                             importante:
-                                            e se a própria tecnologia pudesse ser parte da solução? Este estudo
-                                            investiga como um
+                                            e se a própria tecnologia pudesse ser parte da solução? Como um
                                             jogo digital pode ser desenhado para se tornar uma ferramenta positiva e
                                             eficaz na
                                             promoção da saúde e do bem-estar de crianças e adolescentes, transformando o
                                             entretenimento
-                                            em um aliado.</p>
+                                            em um aliado?</p>
                                         <!-- Botão para próxima section -->
                                         <div class="w-full flex justify-center mt-8">
                                             <a href="#solucao"
@@ -668,110 +679,312 @@
 
                 </div>
             </section>
+            <!-- Substitua as sections #jogo e #prototipo pelo conteúdo do rascunho.html -->
 
-            <section id="jogo" class="py-16 bg-white">
-                <div class="container mx-auto px-6">
-                    <div class="text-center mb-12">
-                        <h3 class="text-3xl font-bold text-teal-800">Explorando o Mundo de Ativo Adventures</h3>
-                        <p class="mt-2 text-md text-gray-600 max-w-3xl mx-auto">Conheça os elementos que compõem a
-                            jornada
-                            do jogador, desde o personagem principal até os desafios a serem superados.</p>
+            <!-- INÍCIO DO NOVO BLOCO (substitui as sections #jogo e #prototipo) -->
+            <section class="card mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold section-title mb-6">🎮 Conceito Geral e Enredo</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <p class="mb-2"><strong>Nome:</strong> Ativo Adventures</p>
+                        <p class="mb-2"><strong>Plataforma:</strong> <span class="badge badge-android">Mobile (Android)</span></p>
+                        <p class="mb-2"><strong>Gênero:</strong> Aventura com elementos Fitness RPG (<span
+                                class="badge badge-rpg">Exergame</span>)</p>
+                        <p class="mb-2"><strong>Motor:</strong> <span class="badge badge-unity">Unity</span></p>
+                        <p class="mb-2"><strong>Público-alvo:</strong> Crianças e pré-adolescentes (8-13 anos)</p>
+                        <p class="mb-4"><strong>Objetivo Principal:</strong> Incentivar a prática de atividades físicas de forma
+                            lúdica e engajadora.</p>
                     </div>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 highlight-text">📜 Enredo Central</h3>
+                        <p>O jogador assume o papel de <span class="font-bold">Lumi</span>, um jovem aventureiro com a missão de
+                            restaurar a energia vital de sua cidade mágica. O equilíbrio foi perdido, e somente a <span
+                                class="font-bold">atividade física do jogador no mundo real</span> pode liberar a energia necessária
+                            para restaurar as cores, ativar construções e desbloquear novas áreas, transformando o exercício em uma
+                            aventura.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold section-title mb-6">🌟 Personagem Lumi</h2>
+                <p class="mb-4">Lumi é o protagonista e guia energético, representando a força vital e a motivação do jogador. Sua
+                    evolução está atrelada à intensidade e frequência da atividade física do usuário.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <img src="https://placehold.co/300x400/D1E8E2/073B4C?text=Lumi+-+Versão+01" alt="Personagem Lumi - Versão 1"
+                        class="placeholder-img w-full h-auto object-contain">
+                    <img src="https://placehold.co/300x400/FFD166/073B4C?text=Lumi+-+Versão+02" alt="Personagem Lumi - Versão 2"
+                        class="placeholder-img w-full h-auto object-contain">
+                    <img src="https://placehold.co/300x400/FF6B6B/FFFFFF?text=Lumi+-+Versão+03+(Final)"
+                        alt="Personagem Lumi - Versão 3" class="placeholder-img w-full h-auto object-contain">
+                </div>
+                <p class="img-caption mt-2">Figura 8: Concepção do design do personagem Lumi.</p>
+            </section>
+
+            <section class="card mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold section-title mb-6">⚙️ Mecânicas Principais</h2>
+                <div class="space-y-4">
+                    <p><strong>Progressão Baseada em Atividade Física:</strong> Integração com Google Health Connect. Passos, tempo
+                        de exercício e distância percorrida são convertidos em energia e desbloqueios no jogo.</p>
+                    <p><strong>Sistema de Vidas:</strong> Limite de 5 vidas, perdidas ao falhar em desafios. Recuperadas com
+                        atividade física.</p>
+                    <p><strong>Mapa, Fases e Desafios:</strong> Mapa aberto com áreas desbloqueáveis (Floresta Inicial, Montanhas
+                        Nebulosas, Cidade Perdida, Templo dos Movimentos, Caverna da Energia). Cada área com fases e minigames.</p>
+                    <p><strong>Esquema de Recompensas:</strong> Moedas do jogo, itens especiais, roupas e skins desbloqueadas com
+                        atividade física e conclusão de desafios.</p>
+                    <p><strong>Metas e Progressão:</strong> Desafios diários, semanais e mensais para manter hábitos saudáveis e
+                        gerar recompensas especiais.</p>
+                </div>
+            </section>
+
+            <section class="card mb-10">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold section-title mb-6 text-center">🔄 Core Loop do Jogo</h2>
+                    <p class="text-center mb-6">O ciclo de jogo principal cria um feedback positivo entre atividade física e progresso virtual.</p>
+            
+                    <div class="flex flex-wrap items-center justify-center gap-6">
+                        <!-- Passo 1 -->
                         <div
-                            class="bg-gray-50 p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <img src="https://placehold.co/400x300/A7F3D0/134E4A?text=Lumi" alt="Personagem Lumi"
-                                class="w-full h-48 object-cover rounded-md mb-4"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/A7F3D0/134E4A?text=Lumi';">
-                            <h4 class="text-xl font-bold text-gray-800">Personagem: Lumi</h4>
-                            <p class="mt-2 text-sm text-gray-600">Um guia energético que representa a força vital do
-                                jogador. Sua evolução e poder dependem diretamente da atividade física realizada.</p>
+                            class="core-loop-step bg-teal-50 p-5 rounded-xl text-center w-44 h-44 flex flex-col justify-center items-center shadow-md transition-transform hover:scale-105">
+                            <div class="text-5xl mb-2">🏃</div>
+                            <h5 class="font-bold mb-1">1. Ação Física</h5>
+                            <p class="text-sm text-gray-600">O jogador se movimenta no mundo real.</p>
                         </div>
-                        <div
-                            class="bg-gray-50 p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <img src="https://placehold.co/400x300/BAE6FD/0C4A6E?text=Hub+World" alt="Hub World do Jogo"
-                                class="w-full h-48 object-cover rounded-md mb-4"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/BAE6FD/0C4A6E?text=Hub+World';">
-                            <h4 class="text-xl font-bold text-gray-800">Hub World e Áreas</h4>
-                            <p class="mt-2 text-sm text-gray-600">Um mapa central que dá acesso a 5 áreas temáticas,
-                                como a
-                                Floresta Inicial e as Montanhas Nebulosas, desbloqueadas com esforço físico.</p>
+                        <!-- Seta -->
+                        <div class="hidden md:flex items-center justify-center">
+                            <span class="text-3xl font-bold text-teal-400 mx-2">→</span>
                         </div>
+                        <!-- Passo 2 -->
                         <div
-                            class="bg-gray-50 p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
-                            <img src="https://placehold.co/400x300/FBCFE8/831843?text=Minigames" alt="Minigames"
-                                class="w-full h-48 object-cover rounded-md mb-4"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/FBCFE8/831843?text=Minigames';">
-                            <h4 class="text-xl font-bold text-gray-800">Minigames e Desafios</h4>
-                            <p class="mt-2 text-sm text-gray-600">Desafios interativos como o "Salto do Aventureiro"
-                                testam
-                                reflexos e são a principal forma de usar a energia acumulada.</p>
+                            class="core-loop-step bg-teal-50 p-5 rounded-xl text-center w-44 h-44 flex flex-col justify-center items-center shadow-md transition-transform hover:scale-105">
+                            <div class="text-5xl mb-2">📱</div>
+                            <h5 class="font-bold mb-1">2. Coleta de Dados</h5>
+                            <p class="text-sm text-gray-600">Health Connect registra a atividade.</p>
+                        </div>
+                        <div class="hidden md:flex items-center justify-center">
+                            <span class="text-3xl font-bold text-teal-400 mx-2">→</span>
+                        </div>
+                        <!-- Passo 3 -->
+                        <div
+                            class="core-loop-step bg-teal-50 p-5 rounded-xl text-center w-44 h-44 flex flex-col justify-center items-center shadow-md transition-transform hover:scale-105">
+                            <div class="text-5xl mb-2">✨</div>
+                            <h5 class="font-bold mb-1">3. Conversão</h5>
+                            <p class="text-sm text-gray-600">Dados viram energia e vidas para Lumi.</p>
+                        </div>
+                        <div class="hidden md:flex items-center justify-center">
+                            <span class="text-3xl font-bold text-teal-400 mx-2">→</span>
+                        </div>
+                        <!-- Passo 4 -->
+                        <div
+                            class="core-loop-step bg-teal-50 p-5 rounded-xl text-center w-44 h-44 flex flex-col justify-center items-center shadow-md transition-transform hover:scale-105">
+                            <div class="text-5xl mb-2">🎮</div>
+                            <h5 class="font-bold mb-1">4. Ação Virtual</h5>
+                            <p class="text-sm text-gray-600">Jogador usa recursos para progredir no jogo.</p>
+                        </div>
+                        <div class="hidden md:flex items-center justify-center">
+                            <span class="text-3xl font-bold text-teal-400 mx-2">→</span>
+                        </div>
+                        <!-- Passo 5 -->
+                        <div
+                            class="core-loop-step bg-teal-50 p-5 rounded-xl text-center w-44 h-44 flex flex-col justify-center items-center shadow-md transition-transform hover:scale-105">
+                            <div class="text-5xl mb-2">🏆</div>
+                            <h5 class="font-bold mb-1">5. Recompensa</h5>
+                            <p class="text-sm text-gray-600">Progresso gera recompensas e mais incentivo.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- NOVA SECTION: Protótipo Desenvolvido -->
-            <section id="prototipo" class="py-16 bg-gradient-to-b from-white to-teal-50">
-                <div class="container mx-auto px-6">
-                    <div class="text-center mb-12">
-                        <h3 class="text-3xl font-bold text-teal-800">Protótipo Desenvolvido</h3>
-                        <p class="mt-2 text-md text-gray-600 max-w-3xl mx-auto">
-                            O protótipo do Ativo Adventures foi criado para validar a proposta do jogo, testar mecânicas
-                            e
-                            demonstrar as principais funcionalidades. A seguir, veja algumas telas e recursos
-                            implementados.
-                        </p>
+            <section class="card mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold section-title mb-8">📱 Protótipo Desenvolvido: Funcionalidades e Telas
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 highlight-text">Tela Inicial</h3>
+                        <p class="text-sm mb-3">Design colorido e intuitivo, com botões principais de fácil acesso.</p>
+                        <img src="https://placehold.co/600x338/A8DADC/073B4C?text=Figura+6:+Tela+Inicial"
+                            alt="Tela Inicial do Ativo Adventures" class="placeholder-img w-full h-auto">
+                        <p class="img-caption">Figura 6: Tela Inicial Ativo Adventures</p>
                     </div>
-                    <div class="grid md:grid-cols-2 gap-10 items-center">
-                        <div>
-                            <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                                <span>Funcionalidades Chave</span> <span class="text-2xl">🧩</span>
-                            </h4>
-                            <ul class="list-disc ml-6 text-gray-700 mb-6 space-y-2">
-                                <li>Tela inicial com personagem Lumi e barra de energia.</li>
-                                <li>Mapa central (Hub World) com áreas desbloqueáveis.</li>
-                                <li>Minigames que utilizam a energia acumulada.</li>
-                                <li>Feedback visual do progresso e conquistas.</li>
-                                <li>Integração com dados reais de atividade física.</li>
-                            </ul>
-                            <p class="text-gray-600 text-sm">
-                                O desenvolvimento envolveu desafios como a integração entre plataformas, coleta de dados
-                                de
-                                saúde e criação de uma experiência motivadora e acessível.
-                            </p>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 highlight-text">Hub World Central</h3>
+                        <p class="text-sm mb-3">Cenário central de navegação com Lumi e os portais para as áreas temáticas.</p>
+                        <img src="https://placehold.co/600x338/F1FAEE/073B4C?text=Figura+7:+Hub+World"
+                            alt="Hub World do Ativo Adventures" class="placeholder-img w-full h-auto">
+                        <p class="img-caption">Figura 7: Hub World</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 highlight-text">Acesso e Bloqueio de Áreas</h3>
+                        <p class="text-sm mb-3">Lumi se move para portais desbloqueados. Portais para áreas bloqueadas são
+                            visualmente distintos.</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <img src="https://placehold.co/400x225/A8DADC/073B4C?text=Figura+9a:+Floresta+Inicial"
+                                alt="Acesso à Floresta Inicial" class="placeholder-img w-full h-auto">
+                            <img src="https://placehold.co/400x225/E63946/FFFFFF?text=Figura+9b:+Templo+(Acesso)"
+                                alt="Acesso ao Templo dos Movimentos" class="placeholder-img w-full h-auto">
                         </div>
-                        <div>
-                            <div class="grid grid-cols-1 gap-6">
-                                <div class="bg-white p-4 rounded-lg shadow-lg">
-                                    <img src="https://placehold.co/400x220/BAE6FD/0C4A6E?text=Tela+Inicial+do+Jogo"
-                                        alt="Tela Inicial do Protótipo" class="w-full h-44 object-cover rounded mb-2"
-                                        onerror="this.onerror=null;this.src='https://placehold.co/400x220/BAE6FD/0C4A6E?text=Tela+Inicial+do+Jogo';">
-                                    <p class="text-center text-gray-700 text-sm">Tela inicial com Lumi e barra de
-                                        energia.
-                                    </p>
-                                </div>
-                                <div class="bg-white p-4 rounded-lg shadow-lg">
-                                    <img src="https://placehold.co/400x220/FBCFE8/831843?text=Mapa+do+Jogo"
-                                        alt="Mapa do Jogo" class="w-full h-44 object-cover rounded mb-2"
-                                        onerror="this.onerror=null;this.src='https://placehold.co/400x220/FBCFE8/831843?text=Mapa+do+Jogo';">
-                                    <p class="text-center text-gray-700 text-sm">Mapa central com áreas temáticas
-                                        desbloqueáveis.</p>
-                                </div>
-                                <div class="bg-white p-4 rounded-lg shadow-lg">
-                                    <img src="https://placehold.co/400x220/A7F3D0/134E4A?text=Minigame+Salto+do+Aventureiro"
-                                        alt="Minigame Salto do Aventureiro"
-                                        class="w-full h-44 object-cover rounded mb-2"
-                                        onerror="this.onerror=null;this.src='https://placehold.co/400x220/A7F3D0/134E4A?text=Minigame+Salto+do+Aventureiro';">
-                                    <p class="text-center text-gray-700 text-sm">Minigame "Salto do Aventureiro":
-                                        desafio de
-                                        reflexos.</p>
-                                </div>
-                            </div>
+                        <p class="img-caption">Figura 9: Acesso a Áreas do Mapa</p>
+                        <img src="https://placehold.co/600x338/457B9D/FFFFFF?text=Figura+10:+%C3%81reas+Desativadas"
+                            alt="Áreas desativadas no mapa" class="placeholder-img w-full h-auto mt-4">
+                        <p class="img-caption">Figura 10: Áreas desativadas do mapa</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 highlight-text">Mini-Game: Salto do Aventureiro</h3>
+                        <p class="text-sm mb-3">Teste de reflexos onde Lumi salta obstáculos. Tutorial na primeira vez e perda de
+                            vida ao colidir.</p>
+                        <img src="https://placehold.co/600x338/FFD166/073B4C?text=Figura+11:+Tutorial+Minigame"
+                            alt="Tutorial do Minigame Salto do Aventureiro" class="placeholder-img w-full h-auto mb-2">
+                        <p class="img-caption">Figura 11: Tutorial do primeiro acesso na fase</p>
+                        <div class="grid grid-cols-2 gap-2 mt-4">
+                            <img src="https://placehold.co/400x225/1D3557/FFFFFF?text=Figura+12a:+Minigame+Ação"
+                                alt="Minigame Salto do Aventureiro em ação" class="placeholder-img w-full h-auto">
+                            <img src="https://placehold.co/400x225/06D6A0/073B4C?text=Figura+12b:+Minigame+Obstáculo"
+                                alt="Minigame Salto do Aventureiro com obstáculo" class="placeholder-img w-full h-auto">
                         </div>
+                        <p class="img-caption">Figura 12: Mini-game Salto do Aventureiro</p>
+                    </div>
+                </div>
+                <div class="mt-8 space-y-3">
+                    <p class="text-md"><strong>Outras Funcionalidades Chave Implementadas:</strong></p>
+                    <ul class="list-disc list-inside pl-4 text-sm">
+                        <li><strong>Sistema de Energia Vital e Vidas:</strong> UI exibe energia (de atividade física) e vidas
+                            (recuperadas com atividade).</li>
+                        <li><strong>Progressão e Desbloqueio de Áreas:</strong> Baseado em marcos de atividade física acumulada.
+                        </li>
+                        <li><strong>Sistema de Desafios e Recompensas:</strong> Desafios diários/semanais geram moedas, itens e
+                            bônus.</li>
+                        <li><strong>Integração com Health Connect:</strong> Plugin nativo Java para comunicação com API Android.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            
+                        <!-- Adicione após a section de protótipo, antes do fechamento do main -->
+            <section class="card mb-10" id="conclusao">
+                <h2 class="text-center text-3xl font-bold section-title mb-8 flex items-center">
+                    <span class="icon-bg icon-bg-coral text-white text-2xl mr-3">📝</span>
+                    Aderência ao Modelo Scrum Adaptado
+                </h2>
+                
+
+                                <!-- Adicione logo após a div .card-border-coral (Síntese do Trabalho Realizado), dentro da section#conclusao -->
+
+                <div class="mb-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Card 1 -->
+                    <div class="card card-border-teal flex flex-col h-full">
+                        <div class="flex items-center mb-3">
+                            <span class="icon-bg icon-bg-teal text-white text-2xl mr-3">🔄</span>
+                            <h4 class="font-bold text-lg">Planejamento Iterativo e Incremental</h4>
+                        </div>
+                        <p class="text-sm flex-1">Divisão do projeto em ciclos quinzenais ("Sprints individuais") permitiu foco em funcionalidades específicas, entregas incrementais e identificação precoce de gargalos.</p>
+                        <img src="anexos/scrum-notion.png" alt="Aplicação de metodologia Scrum no Notion" class="rounded-lg mt-3 shadow border border-gray-100">
+                        <span class="text-xs text-gray-400 mt-1">Figura 13 – Aplicação de metodologia Scrum</span>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="card card-border-teal flex flex-col h-full">
+                        <div class="flex items-center mb-3">
+                            <span class="icon-bg icon-bg-yellow text-gray-700 text-2xl mr-3">📋</span>
+                            <h4 class="font-bold text-lg">Backlog Pessoal Priorizado</h4>
+                        </div>
+                        <p class="text-sm flex-1">Manutenção e constante repriorização do backlog garantiram organização e foco nas funcionalidades de maior impacto, facilitando o acompanhamento do progresso.</p>
+                        <img src="anexos/backlog-notion.png" alt="Product Backlog no Notion" class="rounded-lg mt-3 shadow border border-gray-100">
+                        <span class="text-xs text-gray-400 mt-1">Figura 15 – Product Backlog</span>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="card card-border-teal flex flex-col h-full">
+                        <div class="flex items-center mb-3">
+                            <span class="icon-bg icon-bg-coral text-white text-2xl mr-3">✅</span>
+                            <h4 class="font-bold text-lg">Auto-Revisões e Retrospectivas</h4>
+                        </div>
+                        <p class="text-sm flex-1">Ao final de cada ciclo, autoavaliações críticas permitiram verificar metas, analisar desafios, identificar aprendizados e ajustar o planejamento para o ciclo seguinte.</p>
+                        <img src="anexos/revisao-sprint.png" alt="Revisão de Sprint no Notion" class="rounded-lg mt-3 shadow border border-gray-100">
+                        <span class="text-xs text-gray-400 mt-1">Figura 16 – Revisão de Sprints</span>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="card card-border-teal flex flex-col h-full">
+                        <div class="flex items-center mb-3">
+                            <span class="icon-bg icon-bg-skyblue text-white text-2xl mr-3">🛠️</span>
+                            <h4 class="font-bold text-lg">Flexibilidade e Adaptação</h4>
+                        </div>
+                        <p class="text-sm flex-1">A abordagem iterativa permitiu renegociar escopo e realocar tarefas conforme imprevistos técnicos, mantendo o cronograma do TCC sob controle.</p>
+                        <img src="anexos/planejamento-sprint.png" alt="Planejamento de Sprints no Notion" class="rounded-lg mt-3 shadow border border-gray-100">
+                        <span class="text-xs text-gray-400 mt-1">Figura 14 – Planejamento de Sprints</span>
+                    </div>
+                </div>
+
+                
+
+                <h2 class="text-3xl font-bold section-title mb-8 flex items-center">
+                    <span class="icon-bg icon-bg-teal text-white text-2xl mr-3">🏆</span>
+                    Principais Contribuições do Projeto
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="card card-border-teal p-4">
+                        <h4 class="font-bold mb-1">Protótipo de Exergame Inovador</h4>
+                        <p class="text-sm">Integração narrativa da atividade física à progressão no jogo "Ativo Adventures".</p>
+                    </div>
+                    <div class="card card-border-teal p-4">
+                        <h4 class="font-bold mb-1">Aplicação Prática de Teorias</h4>
+                        <p class="text-sm">Implementação documentada de Octalysis e TAD no design de um jogo sério.</p>
+                    </div>
+                    <div class="card card-border-teal p-4">
+                        <h4 class="font-bold mb-1">Estudo Técnico de Integração</h4>
+                        <p class="text-sm">Detalhes do desenvolvimento do plugin Unity-Health Connect.</p>
+                    </div>
+                    <div class="card card-border-teal p-4">
+                        <h4 class="font-bold mb-1">Base para Pesquisas Futuras</h4>
+                        <p class="text-sm">Plataforma para estudos sobre o impacto de exergames.</p>
+                    </div>
+                    <div class="card card-border-teal p-4 md:col-span-2">
+                        <h4 class="font-bold mb-1">Demonstração de Competências</h4>
+                        <p class="text-sm">Consolidação de habilidades em desenvolvimento de software complexo.</p>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold section-title mb-8 flex items-center">
+                    <span class="icon-bg icon-bg-skyblue text-white text-2xl mr-3">🚧</span>
+                    Limitações Reconhecidas
+                </h2>
+                <div class="mb-8">
+                    <ul class="list-none space-y-3">
+                        <li class="card card-border-skyblue flex items-start p-3"><span class="font-bold mr-2 text-xl text-[#45B7D1]">①</span> Ausência de validação empírica com o público-alvo.</li>
+                        <li class="card card-border-skyblue flex items-start p-3"><span class="font-bold mr-2 text-xl text-[#45B7D1]">②</span> Escopo reduzido do conteúdo final do protótipo.</li>
+                        <li class="card card-border-skyblue flex items-start p-3"><span class="font-bold mr-2 text-xl text-[#45B7D1]">③</span> Foco em aspectos técnicos e mecânicas sobre polimento artístico/sonoro.</li>
+                        <li class="card card-border-skyblue flex items-start p-3"><span class="font-bold mr-2 text-xl text-[#45B7D1]">④</span> Desenvolvimento individual limitando profundidade e velocidade.</li>
+                        <li class="card card-border-skyblue flex items-start p-3"><span class="font-bold mr-2 text-xl text-[#45B7D1]">⑤</span> Restrições temporais e de recursos de um TCC.</li>
+                    </ul>
+                </div>
+
+                <h2 class="text-3xl font-bold section-title mb-8 flex items-center">
+                    <span class="icon-bg icon-bg-yellow text-gray-700 text-2xl mr-3">🚀</span>
+                    Trabalhos Futuros
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-[#FF6B6B]">Evolução do Jogo "Ativo Adventures":</h3>
+                        <ul class="list-disc list-inside space-y-1 pl-2 text-sm">
+                            <li>Expansão massiva de conteúdo (fases, minigames).</li>
+                            <li>Aprofundamento da narrativa e universo.</li>
+                            <li>Sistema completo de customização de Lumi.</li>
+                            <li>Polimento audiovisual profissional.</li>
+                            <li>Balanceamento fino com playtesting.</li>
+                            <li>Funcionalidades sociais opcionais e seguras.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-[#4ECDC4]">Pesquisas Científicas e Validação:</h3>
+                        <ul class="list-disc list-inside space-y-1 pl-2 text-sm">
+                            <li>Estudos de usabilidade e UX com crianças.</li>
+                            <li>Ensaios clínicos/longitudinais sobre impacto na atividade física.</li>
+                            <li>Análise de engajamento e retenção a longo prazo.</li>
+                            <li>Investigação do impacto de diferentes estratégias de gamificação.</li>
+                            <li>Exploração de mecanismos de feedback personalizado.</li>
+                        </ul>
                     </div>
                 </div>
             </section>
+
+
 
         </div>
     </main>

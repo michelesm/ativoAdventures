@@ -282,117 +282,117 @@ document.addEventListener('DOMContentLoaded', function () {
     // Octalysis Chart
 
     function wrapText(str) {
-            const words = str.split(' ');
-            const lines = [];
-            let currentLine = words[0];
+        const words = str.split(' ');
+        const lines = [];
+        let currentLine = words[0];
 
-            for (let i = 1; i < words.length; i++) {
-                if (currentLine.length + words[i].length + 1 < 16) {
-                    currentLine += ' ' + words[i];
-                } else {
-                    lines.push(currentLine);
-                    currentLine = words[i];
-                }
+        for (let i = 1; i < words.length; i++) {
+            if (currentLine.length + words[i].length + 1 < 16) {
+                currentLine += ' ' + words[i];
+            } else {
+                lines.push(currentLine);
+                currentLine = words[i];
             }
-            lines.push(currentLine);
-            return lines;
         }
+        lines.push(currentLine);
+        return lines;
+    }
 
-        const octalysisLabelsRaw = [
-            'Significado Épico',
-            'Realização',
-            'Empoderamento',
-            'Propriedade e Posse',
-            'Influência Social',
-            'Escassez',
-            'Imprevisibilidade',
-            'Perda e Evitação'
-        ];
+    const octalysisLabelsRaw = [
+        'Significado Épico',
+        'Realização',
+        'Empoderamento',
+        'Propriedade e Posse',
+        'Influência Social',
+        'Escassez',
+        'Imprevisibilidade',
+        'Perda e Evitação'
+    ];
 
-        const octalysisLabels = octalysisLabelsRaw.map(label => label.length > 16 ? wrapText(label) : label);
+    const octalysisLabels = octalysisLabelsRaw.map(label => label.length > 16 ? wrapText(label) : label);
 
-        const octalysisData = {
-            labels: octalysisLabels,
-            datasets: [{
-                label: 'Análise Inicial',
-                data: [4, 5, 3, 2, 4, 1, 3, 2],
-                backgroundColor: 'rgba(255, 107, 107, 0.2)',
-                borderColor: '#FF6B6B',
-                pointBackgroundColor: '#FF6B6B',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: '#FF6B6B'
-            }, {
-                label: 'Estratégia Proposta',
-                data: [8, 9, 7, 6, 7, 3, 6, 5],
-                backgroundColor: 'rgba(78, 205, 196, 0.2)',
-                borderColor: '#4ECDC4',
-                pointBackgroundColor: '#4ECDC4',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: '#4ECDC4'
-            }]
-        };
+    const octalysisData = {
+        labels: octalysisLabels,
+        datasets: [{
+            label: 'Análise Inicial',
+            data: [4, 5, 3, 2, 4, 1, 3, 2],
+            backgroundColor: 'rgba(255, 107, 107, 0.2)',
+            borderColor: '#FF6B6B',
+            pointBackgroundColor: '#FF6B6B',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: '#FF6B6B'
+        }, {
+            label: 'Estratégia Proposta',
+            data: [8, 9, 7, 6, 7, 3, 6, 5],
+            backgroundColor: 'rgba(78, 205, 196, 0.2)',
+            borderColor: '#4ECDC4',
+            pointBackgroundColor: '#4ECDC4',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: '#4ECDC4'
+        }]
+    };
 
-        const chartConfig = {
-            type: 'radar',
-            data: octalysisData,
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                elements: {
-                    line: {
-                        borderWidth: 3
-                    }
-                },
-                scales: {
-                    r: {
-                        angleLines: {
-                            color: '#e0e0e0'
+    const chartConfig = {
+        type: 'radar',
+        data: octalysisData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            elements: {
+                line: {
+                    borderWidth: 3
+                }
+            },
+            scales: {
+                r: {
+                    angleLines: {
+                        color: '#e0e0e0'
+                    },
+                    grid: {
+                        color: '#e0e0e0'
+                    },
+                    pointLabels: {
+                        font: {
+                            size: 12,
+                            weight: 'bold'
                         },
-                        grid: {
-                            color: '#e0e0e0'
-                        },
-                        pointLabels: {
-                            font: {
-                                size: 12,
-                                weight: 'bold'
-                            },
-                             color: '#1A535C'
-                        },
-                        ticks: {
-                            backdropColor: '#F7FFF7',
-                            color: '#1A535C'
-                        },
-                        suggestedMin: 0,
-                        suggestedMax: 10
-                    }
-                },
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            title: function(tooltipItems) {
-                                const item = tooltipItems[0];
-                                let label = item.chart.data.labels[item.dataIndex];
-                                if (Array.isArray(label)) {
-                                  return label.join(' ');
-                                } else {
-                                  return label;
-                                }
+                        color: '#1A535C'
+                    },
+                    ticks: {
+                        backdropColor: '#F7FFF7',
+                        color: '#1A535C'
+                    },
+                    suggestedMin: 0,
+                    suggestedMax: 10
+                }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function (tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            } else {
+                                return label;
                             }
                         }
-                    },
-                    legend: {
-                        position: 'top',
                     }
+                },
+                legend: {
+                    position: 'top',
                 }
             }
-        };
+        }
+    };
 
-        window.onload = function() {
-            const ctx = document.getElementById('octalysisChart').getContext('2d');
-            new Chart(ctx, chartConfig);
-        };
+    window.onload = function () {
+        const ctx = document.getElementById('octalysisChart').getContext('2d');
+        new Chart(ctx, chartConfig);
+    };
 
     // Conteúdo dos cards de tecnologia
     const techDetails = {
