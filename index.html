@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Chosen Palette: Soft Neutrals & Warm Teal -->
+    <!-- Application Structure Plan: A single-page, scrolling dashboard design. The structure guides the user logically: from the problem (sedentarism stats), to the proposed solution (Ativo Adventures concept and core loop), the theoretical foundation (gamification/motivation theories), a showcase of the game world, the technology used, and finally, the project's future. This narrative flow is more engaging than the TCC's academic structure and is ideal for an interactive web summary. A sticky navigation bar provides quick access to all sections, enhancing usability. -->
+    <!-- Visualization & Content Choices: 
+        - Problem Section: Goal: Inform/Impact. Method: A prominent bar chart (Chart.js) to visualize the 84% inactivity rate, making the data immediately striking. Key stats are highlighted as large numbers.
+        - Core Loop: Goal: Explain a process. Method: An interactive diagram made with HTML/Tailwind. Hover effects on each step provide focus and engagement without complexity.
+        - Theory Section: Goal: Organize dense info. Method: A tabbed interface to separate Octalysis from TAD, preventing cognitive overload. Each theory's elements are presented as cards for easy digestion.
+        - Game World Section: Goal: Showcase. Method: A visual grid layout with cards for the character and game areas. A hover effect adds a dynamic feel.
+        - Tech Stack: Goal: Inform. Method: A simple, clean visual flow diagram using HTML/CSS and Unicode characters, avoiding complex graphics.
+        - Library/Method Justification: Chart.js for data visualization on canvas. Vanilla JS for all interactions (tabs, scrolling) to keep the app lightweight. Tailwind CSS for a modern, responsive-first layout.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <title>Ativo Adventures - Um Jogo para Mudar Vidas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+            color: #212529;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 300px;
+            max-height: 300px;
+            width: 100%;
+            max-width: 500px;
+        }
+        .tab-button.active {
+            background-color: #53c7c5;
+            color: #FFFFFF;
+            border-color: #31dbcd;
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .tab-content {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .core-loop-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .core-loop-step {
+            transition: all 0.3s ease-in-out;
+        }
+        .tech-icon {
+            transition: transform 0.3s ease;
+        }
+        .tech-icon:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#hero" class="text-xl md:text-2xl font-bold text-teal-700">Ativo Adventures</a>
+            <div class="hidden md:flex space-x-8 text-sm font-semibold">
+                <a href="#problema" class="text-gray-600 hover:text-teal-600 transition-colors">O Problema</a>
+                <a href="#solucao" class="text-gray-600 hover:text-teal-600 transition-colors">A Solução</a>
+                <a href="#teoria" class="text-gray-600 hover:text-teal-600 transition-colors">A Teoria</a>
+                <a href="#tecnologia" class="text-gray-600 hover:text-teal-600 transition-colors">Tecnologia</a>
+                <a href="#jogo" class="text-gray-600 hover:text-teal-600 transition-colors">O Jogo</a>
+                <a href="#prototipo" class="text-gray-600 hover:text-teal-600 transition-colors">O Protótipo</a>
+
+            </div>
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md focus:outline-none">
+                <span class="block w-6 h-0.5 bg-gray-600"></span>
+                <span class="block w-6 h-0.5 bg-gray-600 mt-1"></span>
+                <span class="block w-6 h-0.5 bg-gray-600 mt-1"></span>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+             <a href="#problema" class="block py-2 px-6 text-sm text-gray-600 hover:bg-teal-50">O Problema</a>
+             <a href="#solucao" class="block py-2 px-6 text-sm text-gray-600 hover:bg-teal-50">A Solução</a>
+             <a href="#teoria" class="block py-2 px-6 text-sm text-gray-600 hover:bg-teal-50">A Teoria</a>
+             <a href="#tecnologia" class="block py-2 px-6 text-sm text-gray-600 hover:bg-teal-50">Tecnologia</a>
+             <a href="#jogo" class="block py-2 px-6 text-sm text-gray-600 hover:bg-teal-50">O Jogo</a>
+             <a href="#prototipo" class="block py-2 px-6 text-sm text-gray-600 hover:bg-teal-50">O Protótipo</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-teal-800">Transformando Movimento em Magia</h2>
+                <p class="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">Desenvolvimento De Um Jogo Digital Como Ferramenta De Incentivo À Atividade Física Para Crianças E Adolescentes</p>
+                <a href="#problema" class="mt-8 inline-block bg-teal-600 text-white font-bold py-3 px-8 rounded-full hover:bg-teal-700 transition-transform transform hover:scale-105">Descubra o Projeto</a>
+            </div>
+        </section>
+
+        <section id="problema" class="py-16">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-gray-800">O Desafio: Sedentarismo Juvenil</h3>
+                    <p class="mt-2 text-md text-gray-600 max-w-3xl mx-auto">A inatividade física entre crianças e adolescentes atingiu níveis alarmantes, representando um grave risco à saúde pública e ao desenvolvimento saudável.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h4 class="text-2xl font-semibold text-gray-800 mb-4">Um Cenário Preocupante em Números</h4>
+                        <div class="space-y-4">
+                            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-red-500">
+                                <p class="text-4xl font-bold text-red-500">84%</p>
+                                <p class="text-sm text-gray-600">Dos jovens são considerados fisicamente inativos no Brasil (CGI.br, 2024).</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-orange-500">
+                                <p class="text-4xl font-bold text-orange-500">20 Milhões</p>
+                                <p class="text-sm text-gray-600">É a projeção de jovens com IMC elevado no Brasil até 2035 (World Obesity Federation).</p>
+                            </div>
+                             <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-teal-500">
+                                <p class="text-4xl font-bold text-teal-600">60 Minutos</p>
+                                <p class="text-sm text-gray-600">É o tempo de atividade física diária recomendado pela OMS, que a maioria não atinge.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 md:mt-0">
+                        <div class="bg-white p-6 rounded-lg shadow-lg">
+                            <h4 class="text-xl font-semibold text-center mb-4">Nível de Atividade Física entre Jovens</h4>
+                             <div class="chart-container">
+                                <canvas id="inactivityChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solucao" class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-teal-800">A Solução Proposta: Ativo Adventures</h3>
+                    <p class="mt-2 text-md text-gray-600 max-w-3xl mx-auto">Um exergame onde a atividade física no mundo real alimenta a progressão em um mundo virtual mágico, criando um ciclo de reforço positivo.</p>
+                </div>
+                <div>
+                    <h4 class="text-2xl font-semibold text-center text-gray-800 mb-8">O Ciclo de Engajamento (Core Loop)</h4>
+                    <div class="flex flex-wrap items-center justify-center gap-4 md:gap-0">
+                        <div class="core-loop-step bg-teal-50 p-4 rounded-lg text-center w-48 h-48 flex flex-col justify-center items-center shadow-md">
+                            <div class="text-5xl mb-2">🏃</div>
+                            <h5 class="font-bold">1. Ação Física</h5>
+                            <p class="text-sm text-gray-600">O jogador se movimenta no mundo real.</p>
+                        </div>
+                        <div class="text-2xl font-bold text-teal-400 mx-4 hidden md:block">→</div>
+                        <div class="core-loop-step bg-teal-50 p-4 rounded-lg text-center w-48 h-48 flex flex-col justify-center items-center shadow-md">
+                            <div class="text-5xl mb-2">📱</div>
+                            <h5 class="font-bold">2. Coleta de Dados</h5>
+                            <p class="text-sm text-gray-600">Health Connect registra a atividade.</p>
+                        </div>
+                        <div class="text-2xl font-bold text-teal-400 mx-4 hidden md:block">→</div>
+                         <div class="core-loop-step bg-teal-50 p-4 rounded-lg text-center w-48 h-48 flex flex-col justify-center items-center shadow-md">
+                            <div class="text-5xl mb-2">✨</div>
+                            <h5 class="font-bold">3. Conversão</h5>
+                            <p class="text-sm text-gray-600">Dados viram energia e vidas para Lumi.</p>
+                        </div>
+                         <div class="text-2xl font-bold text-teal-400 mx-4 hidden md:block">→</div>
+                        <div class="core-loop-step bg-teal-50 p-4 rounded-lg text-center w-48 h-48 flex flex-col justify-center items-center shadow-md">
+                            <div class="text-5xl mb-2">🎮</div>
+                            <h5 class="font-bold">4. Ação Virtual</h5>
+                            <p class="text-sm text-gray-600">Jogador usa recursos para progredir no jogo.</p>
+                        </div>
+                        <div class="text-2xl font-bold text-teal-400 mx-4 hidden md:block">→</div>
+                        <div class="core-loop-step bg-teal-50 p-4 rounded-lg text-center w-48 h-48 flex flex-col justify-center items-center shadow-md">
+                            <div class="text-5xl mb-2">🏆</div>
+                            <h5 class="font-bold">5. Recompensa</h5>
+                            <p class="text-sm text-gray-600">Progresso gera recompensas e mais incentivo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="teoria" class="py-16">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-gray-800">A Teoria por Trás da Diversão</h3>
+                    <p class="mt-2 text-md text-gray-600 max-w-3xl mx-auto">O design do jogo é fundamentado em teorias de gamificação e motivação para criar um engajamento profundo e sustentável.</p>
+                </div>
+
+                <!-- NOVOS TÓPICOS TEÓRICOS -->
+                <div class="max-w-6xl mx-auto mb-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Coluna 1 -->
+        <div class="flex flex-col gap-8">
+            <div class="bg-gradient-to-br from-teal-50 to-white rounded-xl shadow-lg p-6 flex flex-col items-center h-full min-h-[340px] hover:shadow-2xl transition-shadow duration-300 group">
+                <div class="w-20 h-20 bg-teal-100 rounded-full flex items-center justify-center text-4xl shadow-md mb-4 group-hover:scale-110 transition-transform duration-300">
+                    🎮
+                </div>
+                <h4 class="text-xl font-bold text-teal-700 mb-2 text-center">Jogos Digitais e Jogos Sérios</h4>
+                <p class="text-gray-700 text-sm text-center">
+                    Jogos digitais são experiências interativas criadas para entretenimento, educação ou treinamento.<br>
+                    <span class="inline-block mt-2"><img src="https://placehold.co/80x40/BAE6FD/0C4A6E?text=Game" alt="Ícone Jogos Digitais" class="inline rounded shadow"></span>
+                    <br>
+                    <span class="font-semibold text-teal-700">Jogos sérios</span>, por sua vez, têm como objetivo principal promover aprendizado, mudança de comportamento ou conscientização, indo além da diversão.
+                </p>
+            </div>
+            <div class="bg-gradient-to-br from-pink-50 to-white rounded-xl shadow-lg p-6 flex flex-col items-center h-full min-h-[340px] hover:shadow-2xl transition-shadow duration-300 group">
+                <div class="w-20 h-20 bg-pink-100 rounded-full flex items-center justify-center text-4xl shadow-md mb-4 group-hover:scale-110 transition-transform duration-300">
+                    🩺
+                </div>
+                <h4 class="text-xl font-bold text-pink-700 mb-2 text-center">Exemplos de Jogos Sérios Voltados para a Saúde</h4>
+                <ul class="list-disc ml-4 text-gray-700 text-sm space-y-1 text-left">
+                    <li><b>Pokémon GO</b>: incentiva a atividade física ao explorar o mundo real. <img src="https://placehold.co/32x32/FFD700/000?text=GO" alt="Pokémon GO" class="inline rounded ml-1"></li>
+                    <li><b>Zombies, Run!</b>: transforma corridas em missões de sobrevivência. <img src="https://placehold.co/32x32/FFB6B6/000?text=ZR" alt="Zombies Run" class="inline rounded ml-1"></li>
+                    <li><b>SuperBetter</b>: utiliza desafios lúdicos para promover saúde mental e física. <img src="https://placehold.co/32x32/BAE6FD/000?text=SB" alt="SuperBetter" class="inline rounded ml-1"></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Coluna 2 -->
+        <div class="flex flex-col gap-8">
+            <div class="bg-gradient-to-br from-yellow-50 to-white rounded-xl shadow-lg p-6 flex flex-col items-center h-full min-h-[340px] hover:shadow-2xl transition-shadow duration-300 group">
+                <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center text-4xl shadow-md mb-4 group-hover:scale-110 transition-transform duration-300">
+                    🏆
+                </div>
+                <h4 class="text-xl font-bold text-yellow-700 mb-2 text-center">Gamificação</h4>
+                <p class="text-gray-700 text-sm text-center">
+                    Gamificação é o uso de elementos de jogos (como pontos, desafios e recompensas) em contextos não lúdicos para aumentar engajamento, motivação e adesão a comportamentos desejados, como a prática de exercícios físicos.
+                    <span class="inline-block ml-2"><img src="https://placehold.co/40x40/FFF9C4/FFD600?text=XP" alt="Ícone Gamificação" class="inline rounded shadow"></span>
+                </p>
+            </div>
+            <div class="bg-gradient-to-br from-purple-50 to-white rounded-xl shadow-lg p-6 flex flex-col items-center h-full min-h-[340px] hover:shadow-2xl transition-shadow duration-300 group">
+                <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center text-4xl shadow-md mb-4 group-hover:scale-110 transition-transform duration-300">
+                    🛡️
+                </div>
+                <h4 class="text-xl font-bold text-purple-700 mb-2 text-center">Imperativos Éticos no Design de Jogos Infantis</h4>
+                <p class="text-gray-700 text-sm text-center">
+                    O design de jogos para crianças exige responsabilidade ética: proteger dados, evitar manipulação, promover inclusão e garantir que o conteúdo seja apropriado e seguro, respeitando o desenvolvimento e a autonomia dos jovens jogadores.
+                    <span class="inline-block ml-2"><img src="https://placehold.co/40x40/E9D5FF/7C3AED?text=ETH" alt="Ética" class="inline rounded shadow"></span>
+                </p>
+            </div>
+        </div>
+        <!-- Coluna 3 -->
+        <div class="flex flex-col gap-8">
+            <div class="bg-gradient-to-br from-cyan-50 to-white rounded-xl shadow-lg p-6 flex flex-col items-center h-full min-h-[340px] hover:shadow-2xl transition-shadow duration-300 group">
+                <div class="w-20 h-20 bg-cyan-100 rounded-full flex items-center justify-center text-4xl shadow-md mb-4 group-hover:scale-110 transition-transform duration-300">
+                    🧩
+                </div>
+                <h4 class="text-xl font-bold text-cyan-700 mb-2 text-center">Framework Octalysis</h4>
+                <div class="grid grid-cols-1 gap-3 w-full">
+                    <div class="bg-gray-50 p-3 rounded-lg text-center">
+                        <h5 class="font-bold text-teal-700">1. Significado Épico</h5>
+                        <p class="text-sm text-gray-600">Salvar a cidade mágica com sua energia.</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg text-center">
+                        <h5 class="font-bold text-teal-700">2. Desenvolvimento</h5>
+                        <p class="text-sm text-gray-600">Progredir, desbloquear áreas, superar desafios.</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg text-center">
+                        <h5 class="font-bold text-teal-700">4. Propriedade</h5>
+                        <p class="text-sm text-gray-600">Acumular energia, sentir Lumi como "seu".</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg text-center">
+                        <h5 class="font-bold text-teal-700">6. Escassez</h5>
+                        <p class="text-sm text-gray-600">Vidas e energia são recursos finitos e valiosos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gradient-to-br from-emerald-50 to-white rounded-xl shadow-lg p-6 flex flex-col items-center h-full min-h-[340px] hover:shadow-2xl transition-shadow duration-300 group">
+                <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center text-4xl shadow-md mb-4 group-hover:scale-110 transition-transform duration-300">
+                    💡
+                </div>
+                <h4 class="text-xl font-bold text-emerald-700 mb-2 text-center">Teoria da Autodeterminação (TAD)</h4>
+                <div class="grid grid-cols-1 gap-3 w-full">
+                    <div class="bg-gray-50 p-3 rounded-lg text-center">
+                        <h5 class="font-bold text-emerald-700">Autonomia</h5>
+                        <p class="text-sm text-gray-600">A liberdade de escolher <i>quando</i> e <i>como</i> se exercitar para progredir no jogo.</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg text-center">
+                        <h5 class="font-bold text-emerald-700">Competência</h5>
+                        <p class="text-sm text-gray-600">A satisfação de superar desafios e ver Lumi evoluir com seu esforço.</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg text-center">
+                        <h5 class="font-bold text-emerald-700">Relacionamento</h5>
+                        <p class="text-sm text-gray-600">A conexão emocional com o personagem Lumi e o objetivo de ajudar seu mundo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIM DOS NOVOS TÓPICOS -->
+
+                <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6">
+                    <div class="mb-6 flex justify-center border-b border-gray-200">
+                        <button class="tab-button active py-3 px-6 font-semibold text-sm md:text-base" data-tab="octalysis">Framework Octalysis</button>
+                        <button class="tab-button py-3 px-6 font-semibold text-sm md:text-base" data-tab="tad">Teoria da Autodeterminação (TAD)</button>
+                    </div>
+
+                    <div id="octalysis" class="tab-content">
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h5 class="font-bold text-teal-700">1. Significado Épico</h5>
+                                <p class="text-sm text-gray-600">Salvar a cidade mágica com sua energia.</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h5 class="font-bold text-teal-700">2. Desenvolvimento</h5>
+                                <p class="text-sm text-gray-600">Progredir, desbloquear áreas, superar desafios.</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h5 class="font-bold text-teal-700">4. Propriedade</h5>
+                                <p class="text-sm text-gray-600">Acumular energia, sentir Lumi como "seu".</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h5 class="font-bold text-teal-700">6. Escassez</h5>
+                                <p class="text-sm text-gray-600">Vidas e energia são recursos finitos e valiosos.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tad" class="tab-content hidden">
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="bg-gray-50 p-6 rounded-lg text-center">
+                                <h4 class="text-xl font-bold mb-2">Autonomia</h4>
+                                <p class="text-gray-600">A liberdade de escolher *quando* e *como* se exercitar para progredir no jogo.</p>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-lg text-center">
+                                <h4 class="text-xl font-bold mb-2">Competência</h4>
+                                <p class="text-gray-600">A satisfação de superar desafios e ver Lumi evoluir com seu esforço.</p>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-lg text-center">
+                                <h4 class="text-xl font-bold mb-2">Relacionamento</h4>
+                                <p class="text-gray-600">A conexão emocional com o personagem Lumi e o objetivo de ajudar seu mundo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+         <section id="tecnologia" class="py-16">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-gray-800">A Arquitetura Tecnológica</h3>
+                    <p class="mt-2 text-md text-gray-600 max-w-3xl mx-auto">As ferramentas e tecnologias que tornam o Ativo Adventures possível e o principal desafio técnico superado.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-xl">
+                    <div class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-6 text-center">
+                        <div class="flex flex-col items-center tech-icon">
+                            <div class="w-24 h-24 bg-teal-100 rounded-full flex items-center justify-center mb-2 shadow-md">
+                                <span class="text-4xl">📱</span>
+                            </div>
+                            <span class="font-bold">Health Connect</span>
+                            <span class="text-xs text-gray-500">API de Saúde Android</span>
+                        </div>
+                        <div class="text-3xl font-bold text-gray-300">→</div>
+                        <div class="flex flex-col items-center tech-icon">
+                           <div class="w-24 h-24 bg-orange-100 rounded-full flex items-center justify-center mb-2 shadow-md">
+                                <span class="text-2xl font-mono text-orange-800">Java</span>
+                            </div>
+                            <span class="font-bold">Plugin Nativo</span>
+                            <span class="text-xs text-gray-500">Ponte de Comunicação</span>
+                        </div>
+                        <div class="text-3xl font-bold text-gray-300">→</div>
+                        <div class="flex flex-col items-center tech-icon">
+                            <div class="w-24 h-24 bg-gray-800 text-white rounded-full flex items-center justify-center mb-2 shadow-md">
+                                <span class="text-4xl">🧊</span>
+                            </div>
+                            <span class="font-bold">Unity (C#)</span>
+                            <span class="text-xs text-gray-500">Engine do Jogo</span>
+                        </div>
+                        <div class="text-3xl font-bold text-gray-300">→</div>
+                        <div class="flex flex-col items-center tech-icon">
+                            <div class="w-24 h-24 bg-yellow-100 rounded-full flex items-center justify-center mb-2 shadow-md">
+                                <span class="text-4xl">🔥</span>
+                            </div>
+                            <span class="font-bold">Firebase</span>
+                             <span class="text-xs text-gray-500">Backend</span>
+                        </div>
+                    </div>
+                    <p class="text-center mt-8 text-gray-600 max-w-2xl mx-auto">O maior desafio técnico foi a criação de um plugin nativo em Java para fazer a ponte entre a API Health Connect do Android e a engine Unity, uma vez que não existia uma solução pronta e acessível.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="jogo" class="py-16 bg-white">
+             <div class="container mx-auto px-6">
+                 <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-teal-800">Explorando o Mundo de Ativo Adventures</h3>
+                    <p class="mt-2 text-md text-gray-600 max-w-3xl mx-auto">Conheça os elementos que compõem a jornada do jogador, desde o personagem principal até os desafios a serem superados.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/400x300/A7F3D0/134E4A?text=Lumi" alt="Personagem Lumi" class="w-full h-48 object-cover rounded-md mb-4" onerror="this.onerror=null;this.src='https://placehold.co/400x300/A7F3D0/134E4A?text=Lumi';">
+                        <h4 class="text-xl font-bold text-gray-800">Personagem: Lumi</h4>
+                        <p class="mt-2 text-sm text-gray-600">Um guia energético que representa a força vital do jogador. Sua evolução e poder dependem diretamente da atividade física realizada.</p>
+                    </div>
+                     <div class="bg-gray-50 p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/400x300/BAE6FD/0C4A6E?text=Hub+World" alt="Hub World do Jogo" class="w-full h-48 object-cover rounded-md mb-4" onerror="this.onerror=null;this.src='https://placehold.co/400x300/BAE6FD/0C4A6E?text=Hub+World';">
+                        <h4 class="text-xl font-bold text-gray-800">Hub World e Áreas</h4>
+                        <p class="mt-2 text-sm text-gray-600">Um mapa central que dá acesso a 5 áreas temáticas, como a Floresta Inicial e as Montanhas Nebulosas, desbloqueadas com esforço físico.</p>
+                    </div>
+                     <div class="bg-gray-50 p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/400x300/FBCFE8/831843?text=Minigames" alt="Minigames" class="w-full h-48 object-cover rounded-md mb-4" onerror="this.onerror=null;this.src='https://placehold.co/400x300/FBCFE8/831843?text=Minigames';">
+                        <h4 class="text-xl font-bold text-gray-800">Minigames e Desafios</h4>
+                        <p class="mt-2 text-sm text-gray-600">Desafios interativos como o "Salto do Aventureiro" testam reflexos e são a principal forma de usar a energia acumulada.</p>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- NOVA SECTION: Protótipo Desenvolvido -->
+        <section id="prototipo" class="py-16 bg-gradient-to-b from-white to-teal-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-teal-800">Protótipo Desenvolvido</h3>
+                    <p class="mt-2 text-md text-gray-600 max-w-3xl mx-auto">
+                        O protótipo do Ativo Adventures foi criado para validar a proposta do jogo, testar mecânicas e demonstrar as principais funcionalidades. A seguir, veja algumas telas e recursos implementados.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                            <span>Funcionalidades Chave</span> <span class="text-2xl">🧩</span>
+                        </h4>
+                        <ul class="list-disc ml-6 text-gray-700 mb-6 space-y-2">
+                            <li>Tela inicial com personagem Lumi e barra de energia.</li>
+                            <li>Mapa central (Hub World) com áreas desbloqueáveis.</li>
+                            <li>Minigames que utilizam a energia acumulada.</li>
+                            <li>Feedback visual do progresso e conquistas.</li>
+                            <li>Integração com dados reais de atividade física.</li>
+                        </ul>
+                        <p class="text-gray-600 text-sm">
+                            O desenvolvimento envolveu desafios como a integração entre plataformas, coleta de dados de saúde e criação de uma experiência motivadora e acessível.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="grid grid-cols-1 gap-6">
+                            <div class="bg-white p-4 rounded-lg shadow-lg">
+                                <img src="https://placehold.co/400x220/BAE6FD/0C4A6E?text=Tela+Inicial+do+Jogo" alt="Tela Inicial do Protótipo" class="w-full h-44 object-cover rounded mb-2" onerror="this.onerror=null;this.src='https://placehold.co/400x220/BAE6FD/0C4A6E?text=Tela+Inicial+do+Jogo';">
+                                <p class="text-center text-gray-700 text-sm">Tela inicial com Lumi e barra de energia.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-lg">
+                                <img src="https://placehold.co/400x220/FBCFE8/831843?text=Mapa+do+Jogo" alt="Mapa do Jogo" class="w-full h-44 object-cover rounded mb-2" onerror="this.onerror=null;this.src='https://placehold.co/400x220/FBCFE8/831843?text=Mapa+do+Jogo';">
+                                <p class="text-center text-gray-700 text-sm">Mapa central com áreas temáticas desbloqueáveis.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-lg">
+                                <img src="https://placehold.co/400x220/A7F3D0/134E4A?text=Minigame+Salto+do+Aventureiro" alt="Minigame Salto do Aventureiro" class="w-full h-44 object-cover rounded mb-2" onerror="this.onerror=null;this.src='https://placehold.co/400x220/A7F3D0/134E4A?text=Minigame+Salto+do+Aventureiro';">
+                                <p class="text-center text-gray-700 text-sm">Minigame "Salto do Aventureiro": desafio de reflexos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="font-bold">Ativo Adventures</p>
+            <p class="text-sm text-gray-400 mt-2">Um projeto de TCC de Michele Santos Memoria</p>
+            <p class="text-sm text-gray-400">Orientação: Prof. Ms. Kláudio Medeiros</p>
+            <p class="text-sm text-gray-400">Curso de Bacharelado em Sistemas de Informação - UniFacisa</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('inactivityChart').getContext('2d');
+            const inactivityChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Jovens Fisicamente Inativos', 'Jovens Fisicamente Ativos'],
+                    datasets: [{
+                        label: '% de Jovens',
+                        data: [84, 16],
+                        backgroundColor: [
+                            'rgba(239, 68, 68, 0.6)',
+                            'rgba(16, 185, 129, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(239, 68, 68, 1)',
+                            'rgba(16, 185, 129, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                color: '#6b7280',
+                                callback: function(value) {
+                                    return value + '%'
+                                }
+                            }
+                        },
+                        y: {
+                           ticks: {
+                                color: '#374151',
+                                font: {
+                                   weight: 'bold'
+                                }
+                           }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                             callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    if (Array.isArray(label)) {
+                                      return label.join(' ');
+                                    } else {
+                                      return label;
+                                    }
+                                },
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const tabs = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(item => item.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    const target = document.getElementById(tab.dataset.tab);
+                    tabContents.forEach(content => {
+                        content.classList.add('hidden', 'opacity-0');
+                    });
+                    target.classList.remove('hidden');
+                    setTimeout(() => target.classList.remove('opacity-0'), 50);
+                });
+            });
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    if (mobileMenu.classList.contains('hidden') === false) {
+                       mobileMenu.classList.add('hidden');
+                    }
+                    const targetElement = document.querySelector(this.getAttribute('href'));
+                    if(targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
