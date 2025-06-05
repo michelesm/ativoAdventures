@@ -1,4 +1,13 @@
-<section id="problema" class="py-16">
+<div id="sessao-navegacao" class="flex justify-between items-center max-w-4xl mx-auto mb-8">
+    <button id="btn-anterior" class="flex items-center gap-2 px-4 py-2 bg-teal-100 text-teal-700 font-semibold rounded hover:bg-teal-200 transition disabled:opacity-50">
+        <span class="text-xl">⬆️</span> Anterior
+    </button>
+    <button id="btn-proxima" class="flex items-center gap-2 px-4 py-2 bg-teal-100 text-teal-700 font-semibold rounded hover:bg-teal-200 transition disabled:opacity-50">
+        Próxima <span class="text-xl">⬇️</span>
+    </button>
+</div>
+
+<section id="problema" class="py-16 sessao-conteudo">
     <div class="container mx-auto px-6">
 
         <div class="text-center mb-12">
@@ -125,7 +134,7 @@
     </div>
 </section>
 
-<section id="solucao" class="py-16 bg-white">
+<section id="solucao" class="py-16 bg-white sessao-conteudo hidden">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
             <h3 class="text-3xl font-bold text-teal-800">A Solução Proposta: Ativo Adventures</h3>
@@ -178,7 +187,7 @@
     </div>
 </section>
 
-<section id="teoria" class="py-16">
+<section id="teoria" class="py-16 sessao-conteudo hidden">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
             <h3 class="text-3xl font-bold text-gray-800">A Teoria por Trás da Diversão</h3>
@@ -345,7 +354,7 @@
     </div>
 </section>
 
-<section id="tecnologia" class="py-16">
+<section id="tecnologia" class="py-16 sessao-conteudo hidden">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
             <h3 class="text-3xl font-bold text-gray-800">A Arquitetura Tecnológica</h3>
@@ -397,7 +406,7 @@
     </div>
 </section>
 
-<section id="jogo" class="py-16 bg-white">
+<section id="jogo" class="py-16 bg-white sessao-conteudo hidden">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
             <h3 class="text-3xl font-bold text-teal-800">Explorando o Mundo de Ativo Adventures</h3>
@@ -440,7 +449,7 @@
 </section>
 
 <!-- NOVA SECTION: Protótipo Desenvolvido -->
-<section id="prototipo" class="py-16 bg-gradient-to-b from-white to-teal-50">
+<section id="prototipo" class="py-16 bg-gradient-to-b from-white to-teal-50 sessao-conteudo hidden">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
             <h3 class="text-3xl font-bold text-teal-800">Protótipo Desenvolvido</h3>
@@ -499,3 +508,12 @@
         </div>
     </div>
 </section>
+
+<footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-6 text-center">
+        <p class="font-bold">Ativo Adventures</p>
+        <p class="text-sm text-gray-400 mt-2">Um projeto de TCC de Michele Santos Memoria</p>
+        <p class="text-sm text-gray-400">Orientação: Prof. Ms. Kláudio Medeiros</p>
+        <p class="text-sm text-gray-400">Curso de Bacharelado em Sistemas de Informação - UniFacisa</p>
+    </div>
+</footer>
